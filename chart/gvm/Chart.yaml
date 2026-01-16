@@ -10,7 +10,7 @@ keywords:
 home: https://community.greenbone.net/
 icon: https://community.greenbone.net/uploads/default/original/1X/2bd8ed1c87dd1a124f45b394039d3ec4bbf62e8e.png
 sources:
-  - https://github.com/admirito/gvm-containers
+  - https://github.com/atassumer/gvm-containers
 maintainers:
   - name: Mohammad Razavi
     twitter: "@admirito"
