@@ -18,7 +18,7 @@ maintainers:
     twitter: "@kshuttletech"
 dependencies:
   - name: postgresql
-    version: 18.1.7
+    version: 15.15.0
     repository: https://charts.bitnami.com/bitnami
     alias: gvmd-db
 
