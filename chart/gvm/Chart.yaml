@@ -18,11 +18,11 @@ maintainers:
     twitter: "@kshuttletech"
 dependencies:
   - name: postgresql
-    version: latest
+    version: 18.2.0
     repository: https://charts.bitnami.com/bitnami
     alias: gvmd-db
 
   - name: redis
-    version: latest
+    version: 7.4.7
     repository: https://charts.bitnami.com/bitnami
     alias: openvas-redis
