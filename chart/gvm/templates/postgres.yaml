@@ -31,7 +31,7 @@ spec:
     spec:
       containers:
       - name: {{ .Chart.Name }}
-        image: postgres:15-alpine
+        image: greenbone/gvmd-pg-ext:15
         env:
         - name: POSTGRES_DB
           value: {{ (index .Values "gvmd-db").postgresqlDatabase }}
