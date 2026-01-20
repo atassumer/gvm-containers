@@ -18,7 +18,3 @@ maintainers:
     twitter: "@kshuttletech"
 dependencies:
     
-  - name: redis
-    version: 7.0.5-debian-11-r7
-    repository: bitnamilegacy/redis
-    alias: openvas-redis
