@@ -10,7 +10,7 @@ spec:
   ports:
     - port: 5432
   selector:
-    app: postgres
+    app.kubernetes.io/name: {{ include "gvm.name" . }}-gvmd-db
 ---
 apiVersion: apps/v1
 kind: StatefulSet
@@ -31,7 +31,7 @@ spec:
     spec:
       containers:
       - name: {{ .Chart.Name }}
-        image: postgres:15-alpine # Hafif ve sade resmi imaj
+        image: postgres:15-alpine
         env:
         - name: POSTGRES_DB
           value: {{ .Values.gvmd-db.postgresqlPassword }}
