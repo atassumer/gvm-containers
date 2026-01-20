@@ -1,0 +1,68 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "gvm.fullname" . }}-redis
+  labels:
+    {{- include "gvm.labels" . | nindent 4 }}
+spec:
+  ports:
+    - port: 6379
+      targetPort: 6379
+  selector:
+    app: redis
+    instance: {{ .Release.Name }}
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: redis
+spec:
+  serviceName: "redis"
+  replicas: 1
+  selector:
+    matchLabels:
+      app: redis
+      instance: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app: redis
+        instance: {{ .Release.Name }}
+    spec:
+      containers:
+      - name: redis
+        image: redis:7-alpine
+        command: ["redis-server"]
+        # GVM için Redis'in Unix Socket ve persistence ayarları
+        args: [
+          "--databases", "1025",
+          "--maxclients", "4096",
+          "--daemonize", "no",
+          "--port", "6379",
+          "--unixsocket", "/run/redis/redis.sock",
+          "--unixsocketperm", "770"
+        ]
+        ports:
+        - containerPort: 6379
+        volumeMounts:
+        - name: redis-data
+          mountPath: /data
+        - name: redis-socket
+          mountPath: /run/redis
+  volumeClaimTemplates:
+  - metadata:
+      name: redis-data
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      storageClassName: {{ (index .Values "redis").storageClass | default "standard" | quote }}
+      resources:
+        requests:
+          storage: {{ (index .Values "redis").size | default "2Gi" | quote }}
+  # Socket paylaşımı için boş bir dizin (gvmd ile aynı podda veya shared volume ise)
+  - metadata:
+      name: redis-socket
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      resources:
+        requests:
+          storage: 100Mi
