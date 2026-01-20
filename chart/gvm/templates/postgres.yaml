@@ -36,7 +36,7 @@ spec:
         - name: POSTGRES_DB
           value: {{ .Values.gvmd-db.postgresqlPassword }}
         - name: POSTGRES_USER
-          value: {{ .Values.gvmd-db.postgresqlUsername }}  
+          value: {{ .Values.gvmd-db.postgresqlUsername }}
         - name: POSTGRES_PASSWORD
           value: {{ .Values.gvmd-db.postgresqlPassword }}
         ports:
