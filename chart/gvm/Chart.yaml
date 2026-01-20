@@ -19,6 +19,6 @@ maintainers:
 dependencies:
     
   - name: redis
-    version: 7.4.7
+    version: 16.8.9
     repository: https://charts.bitnami.com/bitnami
     alias: openvas-redis
