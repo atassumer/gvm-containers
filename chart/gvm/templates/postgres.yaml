@@ -50,7 +50,7 @@ spec:
       name: postgres-data
     spec:
       accessModes: [ "ReadWriteOnce" ]
-      storageClassName: {{ (index .Values "gvmd-db").storageClass }}
+      storageClassName: {{ (index .Values "gvmd-db").persistence.storageClass }}
       resources:
         requests:
-          storage: {{ (index .Values "gvmd-db").size }}
+          storage: {{ (index .Values "gvmd-db").persistence.size }}
