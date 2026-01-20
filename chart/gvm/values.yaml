@@ -19,19 +19,19 @@ replicaCount: 1
 
 image:
   gvmd:
-    registry: "docker.io"
-    repository: "admirito/gvmd"
-    tag: "22"
+    registry: "registry.community.greenbone.net/"
+    repository: "community/gvmd"
+    tag: "stable"
     pullPolicy: IfNotPresent
   gsad:
-    registry: "docker.io"
-    repository: "admirito/gsad"
-    tag: "22"
+    registry: "registry.community.greenbone.net"
+    repository: "community/gsa"
+    tag: "stable"
     pullPolicy: IfNotPresent
   openvas:
-    registry: "docker.io"
-    repository: "admirito/openvas-scanner"
-    tag: "22"
+    registry: "registry.community.greenbone.net"
+    repository: "community/openvas-scanner"
+    tag: "stable"
     pullPolicy: IfNotPresent
   socat:
     registry: "docker.io"
