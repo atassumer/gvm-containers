@@ -17,8 +17,4 @@ maintainers:
   - name: Olivier Rochon
     twitter: "@kshuttletech"
 dependencies:
-    
-  - name: redis
-    version: 24.1.0
-    repository: https://charts.bitnami.com/bitnami
-    alias: openvas-redis
+
