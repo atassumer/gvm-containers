@@ -54,34 +54,3 @@ spec:
       resources:
         requests:
           storage: {{ .Values.gvmd-db.size }}
-
----
-
-
-apiVersion: apps/v1
-kind: StatefulSet
-metadata:
-  name: postgres
-spec:
-  serviceName: "postgres"
-  replicas: 1
-  selector:
-    matchLabels:
-      app: postgres
-  template:
-    metadata:
-      labels:
-        app: postgres
-    spec:
-      containers:
-      - name: postgres
-        image: postgres:15-alpine # Bitnami değil, resmi Docker Hub imajı
-        env:
-        - name: POSTGRES_PASSWORD
-          value: {{ .Values.gvmd-db.postgresqlPassword }}
-        - name: POSTGRES_USER
-          value: {{ .Values.gvmd-db.postgresqlUsername }}          
-        - name: POSTGRES_DB
-          value: {{ .Values.gvmd-db.postgresqlDatabase }}               
-        ports:
-        - containerPort: 5432
