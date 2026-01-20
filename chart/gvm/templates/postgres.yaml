@@ -34,11 +34,11 @@ spec:
         image: postgres:15-alpine
         env:
         - name: POSTGRES_DB
-          value: {{ .Values.gvmd-db.postgresqlPassword }}
+          value: {{ (index .Values "gvmd-db").postgresqlDatabase }}
         - name: POSTGRES_USER
-          value: {{ .Values.gvmd-db.postgresqlUsername }}
+          value: {{ (index .Values "gvmd-db").postgresqlUsername }}
         - name: POSTGRES_PASSWORD
-          value: {{ .Values.gvmd-db.postgresqlPassword }}
+          value: {{ (index .Values "gvmd-db").postgresqlPassword }}
         ports:
         - containerPort: 5432
         volumeMounts:
@@ -50,7 +50,7 @@ spec:
       name: postgres-data
     spec:
       accessModes: [ "ReadWriteOnce" ]
-      storageClassName: {{ .Values.gvmd-db.storageClass }}
+      storageClassName: {{ (index .Values "gvmd-db").storageClass }}
       resources:
         requests:
-          storage: {{ .Values.gvmd-db.size }}
+          storage: {{ (index .Values "gvmd-db").size }}
