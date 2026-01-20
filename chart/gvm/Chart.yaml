@@ -17,9 +17,9 @@ maintainers:
   - name: Olivier Rochon
     twitter: "@kshuttletech"
 dependencies:
-  - name: postgresql
-    version: 13.12
-    repository: https://raw.githubusercontent.com/hansehe/postgres-helm/master/helm/charts/postgres
+  - name: cloudnative-pg
+    version: 0.22.1
+    repository: https://cloudnative-pg.github.io/charts
     alias: gvmd-db
 
   - name: redis
