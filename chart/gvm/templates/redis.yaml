@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "gvm.fullname" . }}-redis
+  name: openvas-gvm-openvas-redis-master
   labels:
     {{- include "gvm.labels" . | nindent 4 }}
 spec:
